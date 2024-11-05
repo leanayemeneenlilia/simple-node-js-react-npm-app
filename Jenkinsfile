@@ -2,7 +2,8 @@ pipeline {
     agent {
         docker {
             image 'node:lts-buster-slim'
-            args '-p 3000:3000'
+            // Définir l'argument `args` pour inclure le chemin absolu dans un format compatible Windows.
+            args '-p 3000:3000 -v /c/ProgramData/Jenkins/.jenkins/workspace/simple-node-js-react-npm-app:/workspace -w /workspace'
         }
     }
     environment {
